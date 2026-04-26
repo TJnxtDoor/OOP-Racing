@@ -1,0 +1,14 @@
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.AssemblyInfoInputs.cache
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.AssemblyInfo.cs
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.csproj.CoreCompileInputs.cache
+C:\Users\Tj\Documents\GitHub\OOP Racing\bin\Debug\net8.0\OOP Racing.exe
+C:\Users\Tj\Documents\GitHub\OOP Racing\bin\Debug\net8.0\OOP Racing.deps.json
+C:\Users\Tj\Documents\GitHub\OOP Racing\bin\Debug\net8.0\OOP Racing.runtimeconfig.json
+C:\Users\Tj\Documents\GitHub\OOP Racing\bin\Debug\net8.0\OOP Racing.dll
+C:\Users\Tj\Documents\GitHub\OOP Racing\bin\Debug\net8.0\OOP Racing.pdb
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.dll
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\refint\OOP Racing.dll
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.pdb
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\OOP Racing.genruntimeconfig.cache
+C:\Users\Tj\Documents\GitHub\OOP Racing\obj\Debug\net8.0\ref\OOP Racing.dll
