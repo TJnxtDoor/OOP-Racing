@@ -8,7 +8,7 @@ namespace ProRacing.Core.Models
         public string Id { get; } = Guid.NewGuid().ToString().Substring(0, 8); //
         public string DriverName { get; init; } // Immutable after initialization
         public double CurrentVelocity { get; private set; } // in mph
-         public double Odometer { get; private set; } // in miles
+        public double Odometer { get; private set; } // in miles
         public bool IsEngineStalled { get; private set; } // Simulate mechanical failure
 
         private readonly double _maxSpeed; // in mph
@@ -16,7 +16,17 @@ namespace ProRacing.Core.Models
 
         public Vehicle(string driver, double maxSpeed) // Constructor with parameters for better encapsulation
         {
-            DriverName = driver;
+            if (string.IsNullOrWhiteSpace(driver))
+            {
+                throw new ArgumentException("Driver name is required.", nameof(driver));
+            }
+
+            if (maxSpeed <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maxSpeed), "Maximum speed must be greater than zero.");
+            }
+
+            DriverName = driver.Trim();
             _maxSpeed = maxSpeed;
         }
 

@@ -2,6 +2,17 @@
 
 A simple racing simulation built with C# to demonstrate basic OOP principles.
 
+## Updates made
+
+The program was updated to make the race simulation more reliable and easier to understand.
+
+- Added validation so the race track length must be greater than zero.
+- Added validation so each vehicle must have a driver name and a max speed greater than zero.
+- Trimmed extra spaces from driver names before saving them.
+- Fixed the race loop so it stops if all engines stall before anyone finishes.
+- Prevented the program from crashing when `Console.Clear()` is not supported by the runner.
+- Updated the final output to show clearer race results, including whether each racer finished, stalled, or did not finish.
+- Fixed small formatting issues in the console output, such as spacing in the track length message.
 
 ## Files
 

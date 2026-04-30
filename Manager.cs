@@ -12,6 +12,11 @@ namespace ProRacing.Core.Logic
 
         public RaceManager(double trackLength)
         {
+            if (trackLength <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(trackLength), "Track length must be greater than zero.");
+            }
+
             _trackLength = trackLength;
         }
 
@@ -20,12 +25,17 @@ namespace ProRacing.Core.Logic
 
         public void StartRace()
         {
-            Console.WriteLine($"Race started: {_trackLength}miles track.");
+            if (_grid.Count == 0)
+            {
+                throw new InvalidOperationException("At least one racer must be registered before starting the race.");
+            }
+
+            Console.WriteLine($"Race started: {_trackLength} miles track.");
             bool winnerCrossed = false;
 
-            while (!winnerCrossed)
+            while (!winnerCrossed && _grid.Any(car => !car.IsEngineStalled))
             {
-                Console.Clear();
+                ClearTelemetryFeed();
                 Console.WriteLine("LIVE TELEMETRY FEED");
 
                 foreach (var car in _grid)
@@ -46,10 +56,38 @@ namespace ProRacing.Core.Logic
         {
             // Sort racers by distance covered and display podium
             var podium = _grid.OrderByDescending(x => x.Odometer).Take(3).ToList();
-            Console.WriteLine("\n=== PODIUM FINISHERS ===");
+            bool hasFinisher = _grid.Any(x => x.Odometer >= _trackLength);
+
+            Console.WriteLine(hasFinisher
+                ? "\n=== RACE RESULTS ==="
+                : "\n=== RACE ENDED: ALL REMAINING ENGINES STALLED ===");
+
             for (int i = 0; i < podium.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {podium[i].DriverName} ({podium[i].Odometer:F2} mi)");
+                string status = GetResultStatus(podium[i]);
+                Console.WriteLine($"{i + 1}. {podium[i].DriverName} ({podium[i].Odometer:F2} mi, {status})");
+            }
+        }
+
+        private string GetResultStatus(Vehicle vehicle)
+        {
+            if (vehicle.Odometer >= _trackLength)
+            {
+                return "finished";
+            }
+
+            return vehicle.IsEngineStalled ? "stalled" : "not finished";
+        }
+
+        private static void ClearTelemetryFeed()
+        {
+            try
+            {
+                Console.Clear();
+            }
+            catch (IOException)
+            {
+                // Some runners do not provide an interactive console buffer.
             }
         }
     }
